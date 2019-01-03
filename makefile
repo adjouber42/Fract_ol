@@ -6,13 +6,17 @@
 #    By: adjouber <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/05 12:07:03 by adjouber          #+#    #+#              #
-#    Updated: 2018/12/28 13:47:46 by adjouber         ###   ########.fr        #
+#    Updated: 2019/01/03 15:06:58 by adjouber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
 
 SRCS = src/main.c \
+	   src/burningship.c \
+	   src/init.c \
+	   src/color.c \
+	   src/plus.c \
 
 OBJS = $(SRCS:.c=.o)
 
