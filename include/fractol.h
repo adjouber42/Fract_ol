@@ -6,7 +6,7 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/26 15:58:16 by adjouber          #+#    #+#             */
-/*   Updated: 2019/01/03 15:11:12 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/01/07 13:39:17 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,12 @@ typedef struct	s_fractol
 {
 	void		*mlx;
 	void		*win;
-	void		(*fractal)();
+	int			fractal;
 	intmax_t	x;
 	intmax_t	y;
 	intmax_t	z;
+	int			option_x;
+	int			option_y;
 	int			i_max;
 	int			color_max;
 	int			color_value;
@@ -55,9 +57,11 @@ typedef struct	s_fractol
 	t_frac		*jul;
 }				t_fractol;
 
-t_fractol		*init_val(void);
+void			init_val(t_fractol *f);
 void			error(int i);
 void			burningship(t_fractol *f);
+void			mandelbrot(t_fractol *f);
+void			julia(t_fractol *f);
 void			pixel_put_image(t_fractol *f, int x, int y, unsigned int c);
 int				ft_color(int a, t_fractol *f);
 

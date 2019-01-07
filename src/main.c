@@ -6,7 +6,7 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/26 15:43:27 by adjouber          #+#    #+#             */
-/*   Updated: 2019/01/03 15:07:30 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/01/07 13:38:47 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,34 +28,36 @@ void	error(int i)
 		exit(1);
 	}
 	if (i == 1)
+	{
 		ft_putendl("Error malloc");
+		exit(1);
+	}
 }
 
-void		julia(t_fractol *f)
+void		start(t_fractol *f)
 {
-	f->i_max = 1;
-	ft_putendl("julia");
-}
-
-void		mandelbrot(t_fractol *f)
-{
-	f->i_max = 1;
-	ft_putendl("mandelbrot");
+	if (f->fractal == 1)
+		julia(f);
+	if (f->fractal == 2)
+		mandelbrot(f);
+	if (f->fractal == 3)
+		burningship(f);
 }
 
 int			main(int ac, char **av)
 {
 	t_fractol	*f;
 
-	f = init_val();
+	if (!(f = (t_fractol*)malloc(sizeof(t_fractol))))
+		error(1);
 	if (ac != 2)
 		error(0);
 	if (ft_strcmp(av[1], "julia") == 0)
-		f->fractal = julia;	
+		f->fractal = 1;	
 	else if (ft_strcmp(av[1], "mandelbrot") == 0)
-		f->fractal = mandelbrot;	
+		f->fractal = 2;	
 	else if (ft_strcmp(av[1], "burningship") == 0)
-		f->fractal = burningship;	
+		f->fractal = 3;	
 	else
 		error(0);
 	if (!(f->mlx = mlx_init()))
@@ -63,9 +65,10 @@ int			main(int ac, char **av)
 		ft_putendl("manque de place pour mlx_init");
 		exit(0);
 	}
+	init_val(f);
 	f->win = mlx_new_window(f->mlx, LON, HAU, "Fract'ol");
 	mlx_hook(f->win, 2, 1L << 1, keyboard, f);
-	f->fractal(f);
+	start(f);
 	mlx_loop(f->mlx);
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: adjouber <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/05 12:07:03 by adjouber          #+#    #+#              #
-#    Updated: 2019/01/03 15:06:58 by adjouber         ###   ########.fr        #
+#    Updated: 2019/01/07 13:38:50 by adjouber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,8 @@ NAME = fractol
 
 SRCS = src/main.c \
 	   src/burningship.c \
+	   src/mandelbrot.c \
+	   src/julia.c \
 	   src/init.c \
 	   src/color.c \
 	   src/plus.c \
@@ -41,12 +43,12 @@ $(NAME) : $(OBJS)
 clean :
 	@make -C libft/ clean
 	@rm -f $(OBJS)
-	@echo "FDF:		Removing OBJ path"
+	@echo "FRACTOL:		Removing OBJ path"
 
 fclean : clean
 	@make -C libft/ fclean
 	@rm -f $(NAME)
-	@echo "FDF:		Removing FDF executable"
+	@echo "FRACTOL:		Removing FDF executable"
 
 re : fclean all
 

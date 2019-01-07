@@ -6,7 +6,7 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 13:42:00 by adjouber          #+#    #+#             */
-/*   Updated: 2019/01/03 15:09:13 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/01/07 14:00:25 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,21 +49,18 @@ static t_frac	*init_jul(void)
 	return (j);
 }
 
-t_fractol		*init_val(void)
+void			init_val(t_fractol *f)
 {
-	t_fractol	*f;
-
-	if (!(f = (t_fractol*)malloc(sizeof(t_fractol))))
-		error(1);
 	f->x = 0;
 	f->y = 0;
 	f->z = 150;
-	f->i_max = 50;
+	f->option_x = LON / 2;
+	f->option_y = HAU / 2;
+	f->i_max = 500;
 	f->color_max = 0x000000;
 	f->color_value = 1;
 	f->img = mlx_new_image(f->mlx, LON, HAU);
 	f->pxl = mlx_get_data_addr(f->img, &(f->bpp), &(f->s_line), &(f->endia));
 	f->mdb = init_mdb();
 	f->jul = init_jul();
-	return (f);
 }
