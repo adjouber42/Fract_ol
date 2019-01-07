@@ -6,7 +6,7 @@
 #    By: adjouber <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/05 12:07:03 by adjouber          #+#    #+#              #
-#    Updated: 2019/01/07 13:38:50 by adjouber         ###   ########.fr        #
+#    Updated: 2019/01/07 15:15:14 by adjouber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRCS = src/main.c \
 	   src/init.c \
 	   src/color.c \
 	   src/plus.c \
+	   src/key.c \
 
 OBJS = $(SRCS:.c=.o)
 

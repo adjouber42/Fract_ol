@@ -6,7 +6,7 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 11:50:43 by adjouber          #+#    #+#             */
-/*   Updated: 2019/01/07 13:56:35 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/01/07 14:14:52 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	mdb_bis(t_fractol *f)
 		f->mdb->zr = f->mdb->zr * f->mdb->zr - f->mdb->zi * f->mdb->zi +
 			f->mdb->cr;
 		f->mdb->zi = 2 * f->mdb->zi * f->mdb->tmp + f->mdb->ci;
-		if (f->mdb->zr * f->mdb->zr + f->mdb->zi * f->mdb->zi >= 1000)
+		if (f->mdb->zr * f->mdb->zr + f->mdb->zi * f->mdb->zi >= 4)
 			return (i);
 	}
 	return (i);

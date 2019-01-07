@@ -6,7 +6,7 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/26 15:58:16 by adjouber          #+#    #+#             */
-/*   Updated: 2019/01/07 13:39:17 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/01/07 15:52:33 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,18 @@
 # define FRACTOL_H
 # include "libft.h"
 # include "mlx.h"
-# include <fcntl.h>
 # include <stdlib.h>
-# include <unistd.h>
-# include <stdio.h>
 # include <math.h>
 # define LON 600
 # define HAU 400
+
+# define KEY_DOWN 125
+# define KEY_UP 126
+# define KEY_LEFT 123
+# define KEY_RIGHT 124
+# define KEY_ZOOM_IN 24
+# define KEY_ZOOM_OUT 27
+# define ESC_KEY 53
 
 typedef struct	s_frac
 {
@@ -64,5 +69,8 @@ void			mandelbrot(t_fractol *f);
 void			julia(t_fractol *f);
 void			pixel_put_image(t_fractol *f, int x, int y, unsigned int c);
 int				ft_color(int a, t_fractol *f);
+int				keyboard(int key, t_fractol *f);
+void			start(t_fractol *f);
+int				expose_hook(t_fractol *f);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 13:42:00 by adjouber          #+#    #+#             */
-/*   Updated: 2019/01/07 14:00:25 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/01/07 15:23:57 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,10 @@ void			init_val(t_fractol *f)
 	f->z = 150;
 	f->option_x = LON / 2;
 	f->option_y = HAU / 2;
-	f->i_max = 500;
+	f->i_max = 50;
 	f->color_max = 0x000000;
 	f->color_value = 1;
+	f->mlx = mlx_init();
 	f->img = mlx_new_image(f->mlx, LON, HAU);
 	f->pxl = mlx_get_data_addr(f->img, &(f->bpp), &(f->s_line), &(f->endia));
 	f->mdb = init_mdb();
