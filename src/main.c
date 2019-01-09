@@ -6,7 +6,7 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/26 15:43:27 by adjouber          #+#    #+#             */
-/*   Updated: 2019/01/07 15:53:29 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/01/09 15:16:36 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,37 +26,28 @@ void	error(int i)
 	}
 }
 
-void		start(t_fractol *f)
-{
-	if (f->fractal == 1)
-		julia(f);
-	if (f->fractal == 2)
-		mandelbrot(f);
-	if (f->fractal == 3)
-		burningship(f);
-}
-
 int			main(int ac, char **av)
 {
 	t_fractol	*f;
 
-	if (!(f = (t_fractol*)malloc(sizeof(t_fractol))))
-		error(1);
-	init_val(f);
+	f = init_val();
 	if (ac != 2)
 		error(0);
 	if (ft_strcmp(av[1], "julia") == 0)
-		f->fractal = 1;	
+		f->fractal = julia;	
 	else if (ft_strcmp(av[1], "mandelbrot") == 0)
-		f->fractal = 2;	
+		f->fractal = mandelbrot;	
 	else if (ft_strcmp(av[1], "burningship") == 0)
-		f->fractal = 3;	
+		f->fractal = burningship;
 	else
 		error(0);
-	f->win = mlx_new_window(f->mlx, LON, HAU, "Fract'ol");
+	f->win = mlx_new_window(f->mlx, f->width, f->height, "Fract'ol");
 	mlx_expose_hook(f->win, expose_hook, f);
 	mlx_key_hook(f->win, keyboard, f);
-	start(f);
+	mlx_hook(f->win, 6, 1L<<6, mouse_move_hook, f);
+	mlx_mouse_hook(f->win, mouse_click_hook, f);
+	mlx_loop_hook(f->mlx, loop_hook, f);
+	f->fractal(f);
 	mlx_loop(f->mlx);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 11:50:43 by adjouber          #+#    #+#             */
-/*   Updated: 2019/01/07 14:14:52 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/01/09 14:33:26 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,16 @@ void		mandelbrot(t_fractol *f)
 	int	y;
 
 	x = f->x - 1;
-	while (++x < LON + f->x)
+	while (++x < f->width + f->x)
 	{
 		y = f->y - 1;
-		while (++y < HAU + f->y)
+		while (++y < f->height + f->y)
 		{
+			f->mdb->zr = 0;
+			f->mdb->zi = 0;
 			f->mdb->cr = (long double)x / f->z + f->mdb->x1;
 			f->mdb->ci = (long double)y / f->z + f->mdb->y1;
 			pixel_put_image(f, x - f->x, y - f->y, ft_color(mdb_bis(f), f));
-			f->mdb->zr = 0;
-			f->mdb->zi = 0;
 		}
 	}
 	mlx_put_image_to_window(f->mlx, f->win, f->img, 0, 0);

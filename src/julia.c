@@ -6,7 +6,7 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 13:16:27 by adjouber          #+#    #+#             */
-/*   Updated: 2019/01/07 14:09:47 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/01/09 13:44:26 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ static int	jul_bis(t_fractol *f)
 	{
 		f->jul->tmp = f->jul->zr;
 		f->jul->zr = f->jul->zr * f->jul->zr - f->jul->zi * f->jul->zi - 0.8 +
-			(0.6 / ((double)f->option_x / (double)LON));
+			(0.6 / ((double)f->option_x / (double)f->width));
 		f->jul->zi = 2 * f->jul->zi * f->jul->tmp + 0.27015 /
-			((double)f->option_y / (double)HAU);
+			((double)f->option_y / (double)f->height);
 		if (f->jul->zr * f->jul->zr + f->jul->zi * f->jul->zi >= 4)
 			return (i);
 	}
@@ -36,10 +36,10 @@ void		julia(t_fractol *f)
 	int	y;
 
 	x = f->x - 1;
-	while (++x < LON + f->x)
+	while (++x < f->width + f->x)
 	{
 		y = f->y - 1;
-		while (++y < HAU + f->y)
+		while (++y < f->height + f->y)
 		{
 			f->jul->zr = (long double)x / f->z + f->jul->x1;
 			f->jul->zi = (long double)y / f->z + f->jul->y1;
