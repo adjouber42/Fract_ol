@@ -6,7 +6,7 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 11:50:43 by adjouber          #+#    #+#             */
-/*   Updated: 2019/01/09 14:33:26 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/01/10 15:47:36 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ static int	mdb_bis(t_fractol *f)
 
 void		mandelbrot(t_fractol *f)
 {
-	int	x;
-	int	y;
+	size_t	x;
+	size_t	y;
 
 	x = f->x - 1;
 	while (++x < f->width + f->x)

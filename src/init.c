@@ -6,12 +6,11 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 13:42:00 by adjouber          #+#    #+#             */
-/*   Updated: 2019/01/09 14:02:17 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/01/10 15:34:10 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
 
 static t_frac	*init_mdb(void)
 {
@@ -55,6 +54,7 @@ t_fractol		*init_val(void)
 
 	if (!(f = (t_fractol*)malloc(sizeof(t_fractol))))
 		error(1);
+	f->zoom_auto = 0;
 	f->width = LON;
 	f->height = HAU;
 	f->x = 0;
@@ -65,6 +65,7 @@ t_fractol		*init_val(void)
 	f->i_max = 50;
 	f->color_max = 0x000000;
 	f->color_value = 1;
+	f->color_set = 1;
 	f->mouse_stop = 0;
 	f->mlx = mlx_init();
 	f->img = mlx_new_image(f->mlx, f->width, f->height);

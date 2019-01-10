@@ -6,7 +6,7 @@
 #    By: adjouber <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/05 12:07:03 by adjouber          #+#    #+#              #
-#    Updated: 2019/01/09 14:07:26 by adjouber         ###   ########.fr        #
+#    Updated: 2019/01/10 12:29:26 by adjouber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,14 +30,16 @@ LIB = -L libft/ -lft -L /usr/local/lib -lmlx
 
 CC = gcc
 
-FLAG = -Wall -Werror -Wextra -g3 -fsanitize=address
+FLAG = -Wall -Werror -Wextra 
+
+DEBUG = -g3 -fsanitize=address
 
 all : $(NAME)
 
 $(NAME) : $(OBJS)
 	@make -C libft/
 	@$(CC) $(FLAG) -o $(NAME) $(OBJS) $(INCLUDES) $(LIB) -framework OpenGL -framework AppKit
-	@echo "FDF:		FDF READY"
+	@echo "FRACTOL:	FRACTOL READY"
 
 %.o : %.c
 	@$(CC) $(FLAG) $(INCLUDES) -c $< -o $@
@@ -45,12 +47,12 @@ $(NAME) : $(OBJS)
 clean :
 	@make -C libft/ clean
 	@rm -f $(OBJS)
-	@echo "FRACTOL:		Removing OBJ path"
+	@echo "FRACTOL:	Removing OBJ path"
 
 fclean : clean
 	@make -C libft/ fclean
 	@rm -f $(NAME)
-	@echo "FRACTOL:		Removing FDF executable"
+	@echo "FRACTOL:	Removing FRACTOL executable"
 
 re : fclean all
 

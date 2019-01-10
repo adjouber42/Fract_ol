@@ -6,7 +6,7 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 13:20:33 by adjouber          #+#    #+#             */
-/*   Updated: 2019/01/09 13:40:24 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/01/10 15:48:18 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ static int	burn_bis(t_fractol *f)
 
 void		burningship(t_fractol *f)
 {
-	intmax_t	x;
-	intmax_t	y;
+	size_t	x;
+	size_t	y;
 
-	x = f->x;
+	x = f->x - 1;
 	while (++x < f->width + f->x)
 	{
-		y = f->y;
+		y = f->y - 1;
 		while (++y < f->height + f->y)
 		{
 			f->mdb->zr = 0;
