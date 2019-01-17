@@ -6,7 +6,7 @@
 #    By: adjouber <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/05 12:07:03 by adjouber          #+#    #+#              #
-#    Updated: 2019/01/17 14:04:08 by adjouber         ###   ########.fr        #
+#    Updated: 2019/01/17 15:55:40 by adjouber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,9 @@ NAME = fractol
 SRCS = src/main.c \
 	   src/burningship.c \
 	   src/mandelbrot.c \
-	   src/julia.c \
+	   src/julia_1.c \
+	   src/julia_2.c \
+	   src/julia_3.c \
 	   src/init.c \
 	   src/color.c \
 	   src/plus.c \

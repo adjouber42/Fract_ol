@@ -6,18 +6,18 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 13:42:00 by adjouber          #+#    #+#             */
-/*   Updated: 2019/01/17 13:39:58 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/01/17 15:57:44 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static t_frac	*init_mdb(void)
+static t_frac	*init_mdb(t_fractol *f)
 {
 	t_frac		*m;
 
 	if (!(m = (t_frac*)malloc(sizeof(t_frac))))
-		error(1);
+		error(1, f);
 	m->x1 = -2.1;
 	m->x2 = 0.6;
 	m->y1 = -1.2;
@@ -30,12 +30,12 @@ static t_frac	*init_mdb(void)
 	return (m);
 }
 
-static t_frac	*init_jul(void)
+static t_frac	*init_jul(t_fractol *f)
 {
 	t_frac		*j;
 
 	if (!(j = (t_frac*)malloc(sizeof(t_frac))))
-		error(1);
+		error(1, f);
 	j->x1 = -2.1;
 	j->x2 = 0.6;
 	j->y1 = -1.2;
@@ -53,7 +53,7 @@ t_fractol		*init_val(void)
 	t_fractol	*f;
 
 	if (!(f = (t_fractol*)malloc(sizeof(t_fractol))))
-		error(1);
+		error(1, f);
 	f->zoom_auto = 0;
 	f->width = LON;
 	f->height = HAU;
@@ -70,7 +70,7 @@ t_fractol		*init_val(void)
 	f->mlx = mlx_init();
 	f->img = mlx_new_image(f->mlx, f->width, f->height);
 	f->pxl = mlx_get_data_addr(f->img, &(f->bpp), &(f->s_line), &(f->endia));
-	f->mdb = init_mdb();
-	f->jul = init_jul();
+	f->mdb = init_mdb(f);
+	f->jul = init_jul(f);
 	return (f);
 }

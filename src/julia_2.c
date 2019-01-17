@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   julia.c                                            :+:      :+:    :+:   */
+/*   julia_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/07 13:16:27 by adjouber          #+#    #+#             */
-/*   Updated: 2019/01/17 14:13:04 by adjouber         ###   ########.fr       */
+/*   Created: 2019/01/17 15:41:31 by adjouber          #+#    #+#             */
+/*   Updated: 2019/01/17 15:53:33 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ static int	jul_bis(t_fractol *f)
 	while (++i < f->i_max)
 	{
 		f->jul->tmp = f->jul->zr;
-		f->jul->zr = f->jul->zr * f->jul->zr - f->jul->zi * f->jul->zi - 0.8 +
-			(0.6 / ((double)f->option_x / (double)f->width));
-		f->jul->zi = 2 * f->jul->zi * f->jul->tmp + 0.27015 /
+		f->jul->zr = f->jul->zr * f->jul->zr - f->jul->zi * f->jul->zi + 0.285 +
+			((double)f->option_x / (double)f->width);
+		f->jul->zi = 2 * f->jul->zi * f->jul->tmp + 0.01 /
 			((double)f->option_y / (double)f->height);
 		if (f->jul->zr * f->jul->zr + f->jul->zi * f->jul->zi >= 4)
 			return (i);
@@ -30,7 +30,7 @@ static int	jul_bis(t_fractol *f)
 	return (i);
 }
 
-void		julia(t_fractol *f)
+void		julia_2(t_fractol *f)
 {
 	long	x;
 	long	y;
