@@ -6,7 +6,7 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/26 15:43:27 by adjouber          #+#    #+#             */
-/*   Updated: 2019/01/17 14:19:40 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/01/17 14:35:18 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void	frac(t_fractol *f)
 		commande();
 		f->commande = 1;
 	}
-	f->win = mlx_new_window(f->mlx, f->width, f->height, "Fract'ol");
 	mlx_expose_hook(f->win, expose_hook, f);
 	mlx_key_hook(f->win, keyboard, f);
 	mlx_hook(f->win, 6, 1L << 6, mouse_move_hook, f);
@@ -96,6 +95,7 @@ int		main(int ac, char **av)
 		f->av[k] = ft_strdup(av[k + 1]);
 		k++;
 	}
+	f->win = mlx_new_window(f->mlx, f->width, f->height, "Fract'ol");
 	frac(f);
 	return (0);
 }
