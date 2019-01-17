@@ -6,7 +6,7 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/26 15:58:16 by adjouber          #+#    #+#             */
-/*   Updated: 2019/01/10 15:46:48 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/01/17 14:17:51 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "mlx.h"
 # include <math.h>
 
-# define LON 400
+# define LON 600
 # define HAU 400
 # define KEY_DOWN 125
 # define KEY_UP 126
@@ -57,9 +57,9 @@ typedef struct	s_fractol
 	void		*mlx;
 	void		*win;
 	void		(*fractal)();
-	size_t		x;
-	size_t		y;
-	size_t		z;
+	long		x;
+	long		y;
+	long		z;
 	int			option_x;
 	int			option_y;
 	int			i_max;
@@ -78,9 +78,14 @@ typedef struct	s_fractol
 	int			color_set;
 	t_frac		*mdb;
 	t_frac		*jul;
+	int			ac;
+	char		**av;
+	int			i;
+	int			commande;
 }				t_fractol;
 
 t_fractol		*init_val(void);
+void			frac(t_fractol *f);
 void			error(int i);
 void			burningship(t_fractol *f);
 void			mandelbrot(t_fractol *f);
