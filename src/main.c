@@ -6,7 +6,7 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/26 15:43:27 by adjouber          #+#    #+#             */
-/*   Updated: 2019/01/17 16:12:12 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/01/28 12:52:06 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	commande(void)
 	ft_putendl("MOUSE STOP : p");
 }
 
-void	error(int i, t_fractol *f)
+void	error(int i)
 {
 	if (i == 0)
 	{
@@ -40,41 +40,26 @@ void	error(int i, t_fractol *f)
 	{
 		ft_putstr("params = mandelbrot, julia_1, julia_2,");
 		ft_putendl(" julia_3, burningship");
-		if (f->i < f->ac - 2)
-		{
-			f->i++;
-			frac(f);
-		}
-		else
-			exit(1);
+		exit(1);
 	}
 }
 
 void	check(t_fractol *f)
 {
-	if (ft_strcmp(f->av[f->i], "help") == 0)
-		error(2, f);
-	else if (ft_strcmp(f->av[f->i], "julia_1") == 0)
+	if (ft_strcmp(f->av, "help") == 0)
+		error(2);
+	else if (ft_strcmp(f->av, "julia_1") == 0)
 		f->fractal = julia_1;
-	else if (ft_strcmp(f->av[f->i], "julia_2") == 0)
+	else if (ft_strcmp(f->av, "julia_2") == 0)
 		f->fractal = julia_2;
-	else if (ft_strcmp(f->av[f->i], "julia_3") == 0)
+	else if (ft_strcmp(f->av, "julia_3") == 0)
 		f->fractal = julia_3;
-	else if (ft_strcmp(f->av[f->i], "mandelbrot") == 0)
+	else if (ft_strcmp(f->av, "mandelbrot") == 0)
 		f->fractal = mandelbrot;
-	else if (ft_strcmp(f->av[f->i], "burningship") == 0)
+	else if (ft_strcmp(f->av, "burningship") == 0)
 		f->fractal = burningship;
 	else
-	{
-		if (f->i < f->ac - 2)
-		{
-			ft_putendl("usage : ./fractol params (help)");
-			f->i++;
-			frac(f);
-		}
-		else
-			error(0, f);
-	}
+			error(0);
 }
 
 void	frac(t_fractol *f)
@@ -96,22 +81,13 @@ void	frac(t_fractol *f)
 int		main(int ac, char **av)
 {
 	t_fractol	*f;
-	int			k;
 
-	k = 0;
 	f = init_val();
+	f->trans_stop = 0;
 	if (ac < 2)
-		error(0, f);
+		error(0);
 	f->commande = 0;
-	f->i = 0;
-	f->ac = ac;
-	if (!(f->av = (char**)malloc(sizeof(char*) * (ac + 1))))
-		error(1, f);
-	while (k + 1 < ac)
-	{
-		f->av[k] = ft_strdup(av[k + 1]);
-		k++;
-	}
+	f->av = ft_strdup(av[1]);
 	f->win = mlx_new_window(f->mlx, f->width, f->height, "Fract'ol");
 	frac(f);
 	return (0);

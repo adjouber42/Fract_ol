@@ -6,7 +6,7 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/26 15:58:16 by adjouber          #+#    #+#             */
-/*   Updated: 2019/01/17 16:12:24 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/01/28 12:53:40 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define ESC_KEY 53
 # define MOUSE_ZOOM_IN 5
 # define MOUSE_ZOOM_OUT 4
+# define MOUSE_CLICK 1
 # define ZOOM_AUTO 18
 # define KEY_RESET 49
 # define KEY_MOUSE_STOP 35
@@ -78,15 +79,16 @@ typedef struct	s_fractol
 	int			color_set;
 	t_frac		*mdb;
 	t_frac		*jul;
-	int			ac;
-	char		**av;
-	int			i;
+	char		*av;
 	int			commande;
+	int			trans_stop;
+	int			trans_x;
+	int			trans_y;
 }				t_fractol;
 
 t_fractol		*init_val(void);
 void			frac(t_fractol *f);
-void			error(int i, t_fractol *f);
+void			error(int i);
 void			burningship(t_fractol *f);
 void			mandelbrot(t_fractol *f);
 void			julia_1(t_fractol *f);

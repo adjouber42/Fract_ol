@@ -6,7 +6,7 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 15:41:31 by adjouber          #+#    #+#             */
-/*   Updated: 2019/01/17 15:53:33 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/01/28 12:39:45 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ static int	jul_bis(t_fractol *f)
 	{
 		f->jul->tmp = f->jul->zr;
 		f->jul->zr = f->jul->zr * f->jul->zr - f->jul->zi * f->jul->zi + 0.285 +
-			((double)f->option_x / (double)f->width);
+			(0.4 * (double)f->option_x / (double)f->width);
 		f->jul->zi = 2 * f->jul->zi * f->jul->tmp + 0.01 /
-			((double)f->option_y / (double)f->height);
+			(0.4 * (double)f->option_y / (double)f->height);
 		if (f->jul->zr * f->jul->zr + f->jul->zi * f->jul->zi >= 4)
 			return (i);
 	}

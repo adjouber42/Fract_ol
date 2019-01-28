@@ -6,7 +6,7 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 14:22:05 by adjouber          #+#    #+#             */
-/*   Updated: 2019/01/17 14:34:03 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/01/28 12:31:09 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,16 +88,7 @@ int			keyboard(int key, t_fractol *f)
 	key_color(key, f);
 	key_depth(key, f);
 	if (key == ESC_KEY)
-	{
-		if (f->i < f->ac - 2)
-		{
-			f->i++;
-			key_reset(KEY_RESET, f);
-			frac(f);
-		}
-		else
-			exit(0);
-	}
+		exit(0);
 	if (key == ZOOM_AUTO)
 		f->zoom_auto = !f->zoom_auto;
 	if (key == KEY_COLOR)
