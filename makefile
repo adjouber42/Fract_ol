@@ -6,7 +6,7 @@
 #    By: adjouber <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/05 12:07:03 by adjouber          #+#    #+#              #
-#    Updated: 2019/01/17 15:55:40 by adjouber         ###   ########.fr        #
+#    Updated: 2019/01/28 16:39:50 by adjouber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ all : $(NAME)
 
 $(NAME) : $(OBJS)
 	@make -C libft/
-	@$(CC) $(FLAG) -o $(NAME) $(OBJS) $(INCLUDES) $(LIB) -framework OpenGL -framework AppKit
+	@$(CC) $(FLAG) $(DEBUG) -o $(NAME) $(OBJS) $(INCLUDES) $(LIB) -framework OpenGL -framework AppKit
 	@echo "FRACTOL:	FRACTOL READY"
 
 %.o : %.c

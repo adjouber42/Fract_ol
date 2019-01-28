@@ -6,7 +6,7 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/26 15:58:16 by adjouber          #+#    #+#             */
-/*   Updated: 2019/01/28 12:53:40 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/01/28 17:06:39 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FRACTOL_H
 # include "libft.h"
 # include "mlx.h"
+# include <pthread.h>
 # include <math.h>
 
 # define LON 600
@@ -85,6 +86,13 @@ typedef struct	s_fractol
 	int			trans_x;
 	int			trans_y;
 }				t_fractol;
+
+typedef struct	s_thread
+{
+	pthread_t	thread;
+	int			idx;
+	t_fractol	*f;
+}				t_thread;
 
 t_fractol		*init_val(void);
 void			frac(t_fractol *f);
