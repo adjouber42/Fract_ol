@@ -40,6 +40,7 @@
 # define KEY_MAGENTA 38
 # define KEY_MORE_DEPTH 47
 # define KEY_LESS_DEPTH 43
+# define THREADS 2
 
 typedef struct	s_frac
 {
@@ -110,5 +111,6 @@ int				mouse_click_hook(int k, int x, int y, t_fractol *f);
 int				loop_hook(t_fractol *f);
 void			ft_change_color(t_fractol *f);
 void			key_depth(int key, t_fractol *f);
+unsigned int		get_thread(pthread_t id, pthread_t *threads);
 
 #endif

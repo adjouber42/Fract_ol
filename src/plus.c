@@ -53,3 +53,13 @@ int		loop_hook(t_fractol *f)
 	}
 	return (0);
 }
+
+unsigned int	get_thread(pthread_t id, pthread_t *threads)
+{
+	int	i;
+
+	i = -1;
+	while (++i < THREADS && !pthread_equal(id, threads[i]))
+		;
+	return (i);
+}
