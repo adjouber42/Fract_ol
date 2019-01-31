@@ -6,7 +6,7 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 13:42:00 by adjouber          #+#    #+#             */
-/*   Updated: 2019/01/28 12:37:18 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/01/31 15:23:57 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ static t_frac	*init_mdb(void)
 	if (!(m = (t_frac*)malloc(sizeof(t_frac))))
 		error(1);
 	m->x1 = -2.1;
-	m->x2 = 0.6;
 	m->y1 = -1.2;
-	m->y2 = 1.2;
 	m->zr = 0;
 	m->zi = 0;
 	m->cr = 0;
@@ -37,9 +35,7 @@ static t_frac	*init_jul(void)
 	if (!(j = (t_frac*)malloc(sizeof(t_frac))))
 		error(1);
 	j->x1 = -2.1;
-	j->x2 = 0.6;
 	j->y1 = -1.2;
-	j->y2 = 1.2;
 	j->zr = 0;
 	j->zi = 0;
 	j->cr = 0;

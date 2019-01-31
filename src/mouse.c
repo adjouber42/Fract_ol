@@ -6,7 +6,7 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 13:58:19 by adjouber          #+#    #+#             */
-/*   Updated: 2019/01/28 12:56:41 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/01/31 16:09:14 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		mouse_move_hook(int x, int y, t_fractol *f)
 		return (0);
 	f->option_x = x;
 	f->option_y = y;
-	f->fractal(f);
+	draw_fractal(f);
 	return (0);
 }
 
@@ -50,10 +50,19 @@ void	mouse_zoom(int k, int x, int y, t_fractol *f)
 int		mouse_translate(int x2, int y2, t_fractol *f)
 {
 	if (f->trans_stop == 0)
-		return (0);
-	f->x += (x2 - f->trans_x) / 4;
-	f->y += (y2 - f->trans_y) / 4;
-	f->fractal(f);
+	{
+		if (x2 < 0 || x2 >= f->width || y2 < 0 || y2 >= f->height ||
+				f->mouse_stop == 1)
+			return (0);
+		f->option_x = x2;
+		f->option_y = y2;
+	}
+	else
+	{
+		f->x += (x2 - f->trans_x) / 4;
+		f->y += (y2 - f->trans_y) / 4;
+	}
+	draw_fractal(f);
 	return (0);
 }
 
@@ -63,11 +72,20 @@ int		mouse_click_hook(int k, int x, int y, t_fractol *f)
 		mouse_zoom(k, x, y, f);
 	if (k == MOUSE_CLICK)
 	{
-		f->trans_stop != 0 ? f->trans_stop = 0 : f->trans_stop++;
+		if (f->trans_stop == 0)
+		{
+			f->trans_stop = 1;
+			f->mouse_stop = 1;
+		}
+		else
+		{
+			f->trans_stop = 0;
+			f->mouse_stop = 0;
+		}
 		f->trans_x = x;
 		f->trans_y = y;
 		mlx_hook(f->win, 6, (1L << 6), mouse_translate, f);
 	}
-	f->fractal(f);
+	draw_fractal(f);
 	return (0);
 }

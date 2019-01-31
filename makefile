@@ -6,7 +6,7 @@
 #    By: adjouber <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/05 12:07:03 by adjouber          #+#    #+#              #
-#    Updated: 2019/01/28 16:39:50 by adjouber         ###   ########.fr        #
+#    Updated: 2019/01/31 14:46:50 by adjouber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME = fractol
 SRCS = src/main.c \
 	   src/burningship.c \
 	   src/mandelbrot.c \
+	   src/tricorne.c \
 	   src/julia_1.c \
 	   src/julia_2.c \
 	   src/julia_3.c \
@@ -23,6 +24,7 @@ SRCS = src/main.c \
 	   src/plus.c \
 	   src/key.c \
 	   src/mouse.c \
+	   src/multithread.c \
 
 OBJS = $(SRCS:.c=.o)
 
@@ -34,13 +36,13 @@ CC = gcc
 
 FLAG = -Wall -Werror -Wextra 
 
-DEBUG = -g3 -fsanitize=address
+DEBUG = -g3 -fsanitize=address,undefined -Weverything -pedantic
 
 all : $(NAME)
 
 $(NAME) : $(OBJS)
 	@make -C libft/
-	@$(CC) $(FLAG) $(DEBUG) -o $(NAME) $(OBJS) $(INCLUDES) $(LIB) -framework OpenGL -framework AppKit
+	@$(CC) $(FLAG) -o $(NAME) $(OBJS) $(INCLUDES) $(LIB) -framework OpenGL -framework AppKit
 	@echo "FRACTOL:	FRACTOL READY"
 
 %.o : %.c

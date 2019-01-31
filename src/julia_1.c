@@ -6,7 +6,7 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 15:41:20 by adjouber          #+#    #+#             */
-/*   Updated: 2019/01/17 15:41:22 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/01/31 16:12:27 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,54 +30,45 @@ static int	jul_bis(t_fractol *f)
 	return (i);
 }
 
-static void	*pixel_choice (void *data)
+void	julia_1(t_fractol *f, int idx)
 {
-	long	x;
-	long	y;
-	long	part;
-	long	start;
-	t_thread	*t;
+	long		x;
+	long		y;
+	long		stop;
+	long		start;
 
-	t = (t_thread*)data;
-	part = t->f->width / THREADS;
-	start = part * get_thread(pthread_self(), (pthread_t*)t->thread);
-	x = start - 1;
-	while (++x < part * (t->idx + 1) + start)
+	start = (f->width / THREADS) * idx;
+	stop = (f->width / THREADS) * (idx + 1);
+	x = idx - 1;
+	while (++x < stop + f->x)
 	{
-		y = t->f->y - 1;
-		while (++y < t->f->height + t->f->y)
+		y = f->y - 1;
+		while (++y < f->height + f->y)
 		{
-			t->f->jul->zr = (long double)x / t->f->z + t->f->jul->x1;
-			t->f->jul->zi = (long double)y / t->f->z + t->f->jul->y1;
-			pixel_put_image(t->f, x - t->f->x, y - t->f->y, ft_color(jul_bis(t->f), t->f));
+			f->jul->zr = (long double)x / f->z + f->jul->x1;
+			f->jul->zi = (long double)y / f->z + f->jul->y1;
+			pixel_put_image(f, x - f->x, y - f->y, ft_color(jul_bis(f), f));
 		}
 	}
 	pthread_exit(NULL);
 }
 
-void		julia_1(t_fractol *f)
+/*void		julia_1(t_fractol *f)
 {
 	int	idx;
-	t_thread	**t;
 
-	if (!(t = (t_thread**)malloc(sizeof(t_thread*) * 8)))
-		error(1);
 	idx = -1;
 	while (++idx < THREADS)
 	{
-		if (!(t[idx] = (t_thread*)malloc(sizeof(t_thread))))
-			error(1);
-		t[idx]->f = f;
-		t[idx]->idx = idx;
-		if ((pthread_create(&t[idx]->thread, NULL, pixel_choice, t[idx])) == -1)
+		f->idx = idx;
+		if ((pthread_create(&f->core[idx], NULL, pixel_choice, f)) == -1)
 			return ;
 	}
 	idx = -1;
 	while (++idx < THREADS)
 	{
-		if (pthread_join(t[idx]->thread, NULL))
+		if (pthread_join(f->core[idx], NULL))
 			return ;
-		free(t[idx]);
 	}
 	mlx_put_image_to_window(f->mlx, f->win, f->img, 0, 0);
-}
+}*/
