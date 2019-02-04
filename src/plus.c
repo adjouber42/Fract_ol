@@ -6,7 +6,7 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 14:26:48 by adjouber          #+#    #+#             */
-/*   Updated: 2019/01/31 16:11:02 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/02/04 14:52:46 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		loop_hook(t_fractol *f)
 	if (f->color_change == 1)
 	{
 		ft_change_color(f);
-		draw_fractal(f);
+		f->fractal(f);
 	}
 	if (f->zoom_auto == 1)
 	{
@@ -49,7 +49,7 @@ int		loop_hook(t_fractol *f)
 		f->x += f->width / 20;
 		f->y += f->height / 20;
 		f->i_max += 2;
-		draw_fractal(f);
+		f->fractal(f);
 	}
 	return (0);
 }

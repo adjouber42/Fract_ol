@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   julia_1.c                                          :+:      :+:    :+:   */
+/*   julia_4.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 15:41:20 by adjouber          #+#    #+#             */
-/*   Updated: 2019/02/04 14:51:15 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/02/04 15:10:01 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@ static int	jul_bis(t_fractol *f)
 	while (++i < f->i_max)
 	{
 		f->jul->tmp = f->jul->zr;
-		f->jul->zr = f->jul->zr * f->jul->zr - f->jul->zi * f->jul->zi - 0.8 +
+		f->jul->zr = f->jul->zr * f->jul->zr - f->jul->zi * f->jul->zi - 1.417022285618 +
 			(0.6 / ((double)f->option_x / (double)f->width));
-		f->jul->zi = 2 * f->jul->zi * f->jul->tmp + 0.27015 /
-			((double)f->option_y / (double)f->height);
+		f->jul->zi = 2 * f->jul->zi * f->jul->tmp + 0.0099534 /
+			(((double)f->option_y / (double)f->height));
 		if (f->jul->zr * f->jul->zr + f->jul->zi * f->jul->zi >= 4)
 			return (i);
 	}
 	return (i);
 }
 
-void		julia_1(t_fractol *f)
+void		julia_4(t_fractol *f)
 {
 	long	x;
 	long	y;

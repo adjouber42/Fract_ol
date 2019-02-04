@@ -6,7 +6,7 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/26 15:58:16 by adjouber          #+#    #+#             */
-/*   Updated: 2019/01/31 16:10:02 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/02/04 15:06:14 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ typedef struct	s_fractol
 {
 	void		*mlx;
 	void		*win;
-	void		(*fractal)(struct s_fractol*, int);
+	void		(*fractal)();
 	long		x;
 	long		y;
 	long		z;
@@ -84,16 +84,7 @@ typedef struct	s_fractol
 	int			trans_stop;
 	int			trans_x;
 	int			trans_y;
-	pthread_t	core[THREADS];
-	int			idx;
 }				t_fractol;
-
-typedef struct	s_thread
-{
-	pthread_t	thread;
-	int			idx;
-	t_fractol	*f;
-}				t_thread;
 
 t_fractol		*init_val(void);
 void			frac(t_fractol *f);
@@ -101,9 +92,10 @@ void			error(int i);
 void			burningship(t_fractol *f);
 void			mandelbrot(t_fractol *f);
 void			tricorne(t_fractol *f);
-void			julia_1(t_fractol *f, int idx);
+void			julia_1(t_fractol *f);
 void			julia_2(t_fractol *f);
 void			julia_3(t_fractol *f);
+void			julia_4(t_fractol *f);
 void			pixel_put_image(t_fractol *f, int x, int y, unsigned int c);
 int				ft_color(int a, t_fractol *f);
 int				keyboard(int key, t_fractol *f);
@@ -112,7 +104,5 @@ int				mouse_click_hook(int k, int x, int y, t_fractol *f);
 int				loop_hook(t_fractol *f);
 void			ft_change_color(t_fractol *f);
 void			key_depth(int key, t_fractol *f);
-unsigned int	get_thread(pthread_t id, pthread_t *threads);
-void			draw_fractal(t_fractol *f);
 
 #endif

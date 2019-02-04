@@ -6,7 +6,7 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 14:22:05 by adjouber          #+#    #+#             */
-/*   Updated: 2019/01/31 16:08:32 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/02/04 14:43:58 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,6 @@ int			keyboard(int key, t_fractol *f)
 		f->color_change = !f->color_change;
 	if (key == KEY_MOUSE_STOP)
 		f->mouse_stop = !f->mouse_stop;
-	draw_fractal(f);
+	f->fractal(f);
 	return (0);
 }

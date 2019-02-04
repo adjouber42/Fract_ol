@@ -6,7 +6,7 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/26 15:43:27 by adjouber          #+#    #+#             */
-/*   Updated: 2019/01/31 16:07:56 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/02/04 15:05:22 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,18 @@ void	check(t_fractol *f)
 		error(2);
 	else if (ft_strcmp(f->av, "julia_1") == 0)
 		f->fractal = julia_1;
-//	else if (ft_strcmp(f->av, "julia_2") == 0)
-//		f->fractal = julia_2;
-//	else if (ft_strcmp(f->av, "julia_3") == 0)
-//		f->fractal = julia_3;
-//	else if (ft_strcmp(f->av, "mandelbrot") == 0)
-//		f->fractal = mandelbrot;
-//	else if (ft_strcmp(f->av, "tricorne") == 0)
-//		f->fractal = tricorne;
-//	else if (ft_strcmp(f->av, "burningship") == 0)
-//		f->fractal = burningship;
+	else if (ft_strcmp(f->av, "julia_2") == 0)
+		f->fractal = julia_2;
+	else if (ft_strcmp(f->av, "julia_3") == 0)
+		f->fractal = julia_3;
+	else if (ft_strcmp(f->av, "julia_4") == 0)
+		f->fractal = julia_4;
+	else if (ft_strcmp(f->av, "mandelbrot") == 0)
+		f->fractal = mandelbrot;
+	else if (ft_strcmp(f->av, "tricorne") == 0)
+		f->fractal = tricorne;
+	else if (ft_strcmp(f->av, "burningship") == 0)
+		f->fractal = burningship;
 	else
 			error(0);
 }
@@ -76,7 +78,7 @@ void	frac(t_fractol *f)
 	mlx_hook(f->win, 6, 1L << 6, mouse_move_hook, f);
 	mlx_mouse_hook(f->win, mouse_click_hook, f);
 	mlx_loop_hook(f->mlx, loop_hook, f);
-	draw_fractal(f);
+	f->fractal(f);
 	mlx_loop(f->mlx);
 }
 
