@@ -6,7 +6,7 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/26 15:43:27 by adjouber          #+#    #+#             */
-/*   Updated: 2019/02/06 14:43:01 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/02/06 14:56:41 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,5 @@ int		main(int ac, char **av)
 	f->av = ft_strdup(av[1]);
 	f->win = mlx_new_window(f->mlx, f->width, f->height, "Fract'ol");
 	frac(f);
-	ft_free(f);
 	return (0);
 }

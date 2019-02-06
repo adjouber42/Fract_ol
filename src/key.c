@@ -6,7 +6,7 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 14:22:05 by adjouber          #+#    #+#             */
-/*   Updated: 2019/02/04 14:43:58 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/02/06 15:02:39 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,12 @@ int			keyboard(int key, t_fractol *f)
 	key_color(key, f);
 	key_depth(key, f);
 	if (key == ESC_KEY)
+	{
+		mlx_destroy_image(f->mlx, f->img);
+		mlx_destroy_window(f->mlx, f->win);
+		ft_free(f);
 		exit(0);
+	}
 	if (key == ZOOM_AUTO)
 		f->zoom_auto = !f->zoom_auto;
 	if (key == KEY_COLOR)

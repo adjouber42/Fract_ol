@@ -6,7 +6,7 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 14:26:48 by adjouber          #+#    #+#             */
-/*   Updated: 2019/02/06 14:44:15 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/02/06 15:02:04 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int		loop_hook(t_fractol *f)
 
 void	ft_free(t_fractol *f)
 {
+	free(f->av);
 	free(f->mdb);
 	free(f->jul);
 	free(f);
