@@ -6,7 +6,7 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/26 15:43:27 by adjouber          #+#    #+#             */
-/*   Updated: 2019/02/06 14:56:41 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/02/06 17:32:29 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	check(t_fractol *f)
 	else if (ft_strcmp(f->av, "burningship") == 0)
 		f->fractal = burningship;
 	else
-			error(0);
+		error(0);
 }
 
 void	frac(t_fractol *f)
@@ -80,7 +80,7 @@ void	frac(t_fractol *f)
 	mlx_hook(f->win, 6, 1L << 6, mouse_move_hook, f);
 	mlx_mouse_hook(f->win, mouse_click_hook, f);
 	mlx_loop_hook(f->mlx, loop_hook, f);
-	f->fractal(f);
+	draw_fractal(f);
 	mlx_loop(f->mlx);
 }
 

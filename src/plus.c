@@ -6,14 +6,13 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 14:26:48 by adjouber          #+#    #+#             */
-/*   Updated: 2019/02/06 15:02:04 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/02/06 17:34:50 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
 void	pixel_put_image(t_fractol *f, int x, int y, unsigned int c)
-
 {
 	int	i;
 
@@ -40,7 +39,7 @@ int		loop_hook(t_fractol *f)
 	if (f->color_change == 1)
 	{
 		ft_change_color(f);
-		f->fractal(f);
+		draw_fractal(f);
 	}
 	if (f->zoom_auto == 1)
 	{
@@ -50,7 +49,7 @@ int		loop_hook(t_fractol *f)
 		f->x += f->width / 20;
 		f->y += f->height / 20;
 		f->i_max += 2;
-		f->fractal(f);
+		draw_fractal(f);
 	}
 	return (0);
 }

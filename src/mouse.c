@@ -6,7 +6,7 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 13:58:19 by adjouber          #+#    #+#             */
-/*   Updated: 2019/02/04 14:33:32 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/02/06 16:20:47 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		mouse_move_hook(int x, int y, t_fractol *f)
 		return (0);
 	f->option_x = x;
 	f->option_y = y;
-	f->fractal(f);
+	draw_fractal(f);
 	return (0);
 }
 
@@ -62,7 +62,7 @@ int		mouse_translate(int x2, int y2, t_fractol *f)
 		f->x += (x2 - f->trans_x) / 4;
 		f->y += (y2 - f->trans_y) / 4;
 	}
-	f->fractal(f);
+	draw_fractal(f);
 	return (0);
 }
 
@@ -86,6 +86,6 @@ int		mouse_click_hook(int k, int x, int y, t_fractol *f)
 		f->trans_y = y;
 		mlx_hook(f->win, 6, (1L << 6), mouse_translate, f);
 	}
-	f->fractal(f);
+	draw_fractal(f);
 	return (0);
 }
