@@ -6,7 +6,7 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/26 15:58:16 by adjouber          #+#    #+#             */
-/*   Updated: 2019/02/04 15:06:14 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/02/06 14:43:31 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ void			julia_1(t_fractol *f);
 void			julia_2(t_fractol *f);
 void			julia_3(t_fractol *f);
 void			julia_4(t_fractol *f);
+void			julia_5(t_fractol *f);
 void			pixel_put_image(t_fractol *f, int x, int y, unsigned int c);
 int				ft_color(int a, t_fractol *f);
 int				keyboard(int key, t_fractol *f);
@@ -104,5 +105,6 @@ int				mouse_click_hook(int k, int x, int y, t_fractol *f);
 int				loop_hook(t_fractol *f);
 void			ft_change_color(t_fractol *f);
 void			key_depth(int key, t_fractol *f);
+void			ft_free(t_fractol *f);
 
 #endif

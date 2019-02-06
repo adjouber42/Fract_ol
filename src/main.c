@@ -6,7 +6,7 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/26 15:43:27 by adjouber          #+#    #+#             */
-/*   Updated: 2019/02/04 15:05:22 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/02/06 14:43:01 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ void	check(t_fractol *f)
 		f->fractal = julia_3;
 	else if (ft_strcmp(f->av, "julia_4") == 0)
 		f->fractal = julia_4;
+	else if (ft_strcmp(f->av, "julia_5") == 0)
+		f->fractal = julia_5;
 	else if (ft_strcmp(f->av, "mandelbrot") == 0)
 		f->fractal = mandelbrot;
 	else if (ft_strcmp(f->av, "tricorne") == 0)
@@ -94,5 +96,6 @@ int		main(int ac, char **av)
 	f->av = ft_strdup(av[1]);
 	f->win = mlx_new_window(f->mlx, f->width, f->height, "Fract'ol");
 	frac(f);
+	ft_free(f);
 	return (0);
 }

@@ -6,13 +6,14 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 14:26:48 by adjouber          #+#    #+#             */
-/*   Updated: 2019/02/04 14:52:46 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/02/06 14:44:15 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
 void	pixel_put_image(t_fractol *f, int x, int y, unsigned int c)
+
 {
 	int	i;
 
@@ -52,4 +53,11 @@ int		loop_hook(t_fractol *f)
 		f->fractal(f);
 	}
 	return (0);
+}
+
+void	ft_free(t_fractol *f)
+{
+	free(f->mdb);
+	free(f->jul);
+	free(f);
 }

@@ -6,7 +6,7 @@
 #    By: adjouber <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/05 12:07:03 by adjouber          #+#    #+#              #
-#    Updated: 2019/02/04 15:05:59 by adjouber         ###   ########.fr        #
+#    Updated: 2019/02/06 14:32:38 by adjouber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRCS = src/main.c \
 	   src/julia_2.c \
 	   src/julia_3.c \
 	   src/julia_4.c \
+	   src/julia_5.c \
 	   src/init.c \
 	   src/color.c \
 	   src/plus.c \
