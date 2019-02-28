@@ -6,7 +6,7 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/26 15:43:27 by adjouber          #+#    #+#             */
-/*   Updated: 2019/02/06 17:32:29 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/02/07 13:43:25 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	error(int i)
 	if (i == 2)
 	{
 		ft_putstr("params = mandelbrot, julia_1, julia_2,");
-		ft_putendl(" julia_3, burningship, tricorne");
+		ft_putendl(" julia_3, julia_4, julia_5, burningship, tricorne");
 		exit(1);
 	}
 }
