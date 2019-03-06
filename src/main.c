@@ -6,7 +6,7 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/26 15:43:27 by adjouber          #+#    #+#             */
-/*   Updated: 2019/02/07 13:43:25 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/03/06 12:17:20 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	frac(t_fractol *f)
 	mlx_hook(f->win, 6, 1L << 6, mouse_move_hook, f);
 	mlx_mouse_hook(f->win, mouse_click_hook, f);
 	mlx_loop_hook(f->mlx, loop_hook, f);
+	mlx_hook(f->win, 17, 1L << 17, close_prog, f);
 	draw_fractal(f);
 	mlx_loop(f->mlx);
 }

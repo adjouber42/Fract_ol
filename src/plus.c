@@ -6,7 +6,7 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 14:26:48 by adjouber          #+#    #+#             */
-/*   Updated: 2019/02/06 17:34:50 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/03/06 12:20:20 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,13 @@ void	ft_free(t_fractol *f)
 	free(f->mdb);
 	free(f->jul);
 	free(f);
+}
+
+int		close_prog(t_fractol *f)
+{
+	mlx_destroy_image(f->mlx, f->img);
+	mlx_destroy_window(f->mlx, f->win);
+	ft_free(f);
+	exit(0);
+	return (0);
 }

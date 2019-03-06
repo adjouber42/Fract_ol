@@ -6,7 +6,7 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/26 15:58:16 by adjouber          #+#    #+#             */
-/*   Updated: 2019/02/06 16:46:05 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/03/06 12:20:06 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,5 +113,6 @@ void			ft_change_color(t_fractol *f);
 void			key_depth(int key, t_fractol *f);
 void			ft_free(t_fractol *f);
 void			draw_fractal(t_fractol *f);
+int				close_prog(t_fractol *f);
 
 #endif
